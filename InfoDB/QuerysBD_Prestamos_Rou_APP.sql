@@ -1,3 +1,4 @@
+
 CREATE TABLE Cliente (
     IdCliente INT PRIMARY KEY IDENTITY(1,1),
     Nombre VARCHAR(25),
@@ -26,3 +27,36 @@ CREATE TABLE Prestamo (
     RestarMontoPrestado decimal,
     fechaRegistroPrestamo DATETIME
 );
+
+CREATE TABLE Cuota (
+    IdCuota INT PRIMARY KEY IDENTITY(1,1),
+    IdPrestamo INT,
+    Numero INT,
+    Fecha DATE,
+    Capital FLOAT,
+    Interes FLOAT,
+    CapitalPagado FLOAT,
+    InteresPagado FLOAT
+);
+
+CREATE TABLE Cobros (
+    IdCobro INT PRIMARY KEY IDENTITY(1,1),
+    Fecha DATE,
+    IdPrestamo INT,
+    Concepto VARCHAR(255),
+    MontoInteres FLOAT,
+    MontoCapital FLOAT,
+    Estado INT
+);
+
+CREATE TABLE DetalleCobros (
+    IdDetalleCobro INT PRIMARY KEY IDENTITY(1,1),
+    Idcobro INT,
+    Idcuota INT,
+    Capital FLOAT,
+    Interes FLOAT,
+    CapitalPagado FLOAT,
+    InteresPagado FLOAT
+);
+
+
